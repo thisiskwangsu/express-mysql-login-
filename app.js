@@ -38,19 +38,19 @@ app.post('/loginProcess', (req, res) => { //로그인 기능
 
         if(results.length){//success
             res.send("Welcome")
-        }else{//fail
+        }else{             //fail
             res.send("<script>alert('not found'); location.href='/'</script>")
         }
     });
 })
 
-app.get('/signup', (req, res) => {// localhost:3000/signup 으로 들어왔을떄 응답해준다
+app.get('/signup', (req, res) => {  // localhost:3000/signup 으로 들어왔을떄 응답해준다
     res.render('signup', req.query) // index.ejs를 불러와서 출력해라
 })
 
 app.post('/createProcess', (req, res) => { //회원가입 기능
     const id = req.body.newId;
-    const password = req.body.newPw; //회원가입 폼에서 id와 pw를 가져온다. post 방식이기 때문에 body-parser 모듈설치
+    const password = req.body.newPw;       //회원가입 폼에서 id와 pw를 가져온다. post 방식이기 때문에 body-parser 모듈설치
     const name = req.body.newName;
 
     const sql = `INSERT INTO accounts(id,pw,name,created) 
