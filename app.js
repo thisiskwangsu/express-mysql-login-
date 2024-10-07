@@ -8,8 +8,8 @@ const port = 3000 //3000포트
 const connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : '',
-    database : ''
+    password : '647412',
+    database : 'nodelogin'
 });
 connection.connect();
 
@@ -29,7 +29,7 @@ app.post('/loginProcess', (req, res) => { //로그인 기능
     const user_id = req.body.UserId;
     const user_pw = req.body.UserPw;
 
-    var sql = `SELECT * FROM accounts WHERE id=${user_id} and pw=${user_pw}`;
+    var sql = `SELECT * FROM accounts WHERE id="${user_id}" and pw="${user_pw}"`;
 
     connection.query(sql, function (error, results, fields) {
         if (error) throw error;
@@ -53,8 +53,8 @@ app.post('/createProcess', (req, res) => { //회원가입 기능
     const password = req.body.newPw;       //회원가입 폼에서 id와 pw를 가져온다. post 방식이기 때문에 body-parser 모듈설치
     const name = req.body.newName;
 
-    const sql = `INSERT INTO accounts(id,pw,name,created) 
-                VALUES(${id}, ${password}, ${name},now());`;
+    const sql = `INSERT INTO accounts(id,pw,name) 
+                VALUES("${id}", "${password}", "${name}");`;
 
     connection.query(sql, function (error, results, fields) {
         if (error) throw error;
