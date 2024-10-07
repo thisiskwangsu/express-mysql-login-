@@ -8,8 +8,8 @@ const port = 3000 //3000Æ÷Æ®
 const connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : '647412',
-    database : 'nodelogin'
+    password : '',
+    database : ''
 });
 connection.connect();
 
